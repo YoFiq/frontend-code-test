@@ -66,6 +66,10 @@ function mutateArray(a) {
                 room_no,
                 some_total,
             };
+        })
+        .sort((a, b) => {
+            const lastCmp = a.last_name.localeCompare(b.last_name);
+            return lastCmp !== 0 ? lastCmp : a.first_name.localeCompare(b.first_name);
         });
 }
 

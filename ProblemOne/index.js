@@ -68,8 +68,8 @@ function mutateArray(a) {
             };
         })
         .sort((a, b) => {
-            const lastCmp = a.last_name.localeCompare(b.last_name);
-            return lastCmp !== 0 ? lastCmp : a.first_name.localeCompare(b.first_name);
+            const lastCmp = (a.last_name ?? '').localeCompare(b.last_name ?? '');
+            return lastCmp !== 0 ? lastCmp : (a.first_name ?? '').localeCompare(b.first_name ?? '');
         });
 }
 

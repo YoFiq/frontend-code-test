@@ -56,15 +56,17 @@ var arr = [
 ];
 
 function mutateArray(a) {
-    return a.map((item) => {
-        const { guest_booking: { room_no, some_array } = {}, ...rest } = item;
-        const some_total = (some_array ?? []).reduce((sum, n) => sum + n, 0);
-        return {
-            ...rest,
-            room_no,
-            some_total,
-        };
-    });
+    return a
+        .filter((item) => item.guest_type === 'guest')
+        .map((item) => {
+            const { guest_booking: { room_no, some_array } = {}, ...rest } = item;
+            const some_total = (some_array ?? []).reduce((sum, n) => sum + n, 0);
+            return {
+                ...rest,
+                room_no,
+                some_total,
+            };
+        });
 }
 
 $(document).ready(function () {
